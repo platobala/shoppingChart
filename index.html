@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="unit" type="text" class="form-control text-center" value="0">
-                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="phone-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <button id="phone-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="price">00</span></h5>
+                        <h5>$<span id="phone-total">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minus2" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="unit2" type="text" class="form-control text-center" value="0">
-                           <button id="plus2" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span id="price2">00</span></h5>
+                        <h5>$<span id="case-total">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5> <span id="subTotal" >00</span></h5>
+                        <h5>$1,278</h5>
                         <h5>$0</h5>
-                        <h5>$ <span id="total">00</span></h5>
+                        <h5>$1,278</h5>
                      </div>
                   </div>
                </div>
@@ -75,91 +75,100 @@
                </div>
             </div>
          </div>
+         <script>
+            
+            
+            // plus button(phone) (rule 2 short way)
+            document.getElementById('phone-increase').addEventListener("click", function(){
+               handleProductChange(true);
+
+            })
+            // minus button (phone) (rule 2 short way)
+            document.getElementById('phone-decrease').addEventListener('click', function(){
+               handleProductChange(false);
+            })
+            // (work in minus button for different +1 to -1)
+            function handleProductChange(isIncrease){
+               const phoneInput = document.getElementById('phone-count');
+               const phoneCount = parseInt(phoneInput.value);
+               let phoneNewCount = phoneCount;
+               if(isIncrease == true){
+                  phoneNewCount = phoneCount + 1;
+               }
+               if(isIncrease == false && phoneCount > 0){
+                  phoneNewCount = phoneCount -1;
+               }
+               // const phoneNewCount = phoneCount -1;
+               phoneInput.value = phoneNewCount;
+               const phoneTotal = phoneNewCount * 1219;
+               document.getElementById('phone-total').innerText = phoneTotal;
+            }
+
+             // case plus button(rule 2)
+             document.getElementById('case-increase').addEventListener('click', function(){
+               handleCaseChange(true);
+            })
+            // case minus button (rule 2)
+            document.getElementById('case-decrease').addEventListener('click', function(){
+              handleCaseChange(false);
+            })
+            // (work in minus button for different +1 to -1)
+            function handleCaseChange(isCaseIncrease){
+               const caseInput = document.getElementById('case-count');
+              const caseCount = parseInt(caseInput.value);
+              let caseNewCount = caseCount;
+              if(isCaseIncrease == true){
+                 caseNewCount = caseCount + 1;
+              }
+              if(isCaseIncrease == false && caseCount > 0){
+                 caseNewCount = caseCount -1;
+              }
+              caseInput.value = caseNewCount;
+              const caseTotal = caseNewCount * 59;
+              document.getElementById('case-total').innerText = caseTotal;
+            }
+
+            // // plus button(phone)(rule 1 broad)
+            // document.getElementById('phone-increase').addEventListener("click", function(){
+            //    const phoneInput = document.getElementById('phone-count');
+            //    const phoneCount = parseInt(phoneInput.value);
+            //    const phoneNewCount = phoneCount + 1;
+            //    phoneInput.value = phoneNewCount;
+            //    const phoneTotal = phoneNewCount * 1219;
+            //    document.getElementById('phone-total').innerText = phoneTotal;
+
+            // })
+            // // minus button (phone) (rule 1 broad)
+            // document.getElementById('phone-decrease').addEventListener('click', function(){
+            //    const phoneInput = document.getElementById('phone-count');
+            //    const phoneCount = parseInt(phoneInput.value);
+            //    const phoneNewCount = phoneCount -1;
+            //    phoneInput.value = phoneNewCount;
+            //    const phoneTotal = phoneNewCount * 1219;
+            //    document.getElementById('phone-total').innerText = phoneTotal;
+            // })
+            // // plus button (case) (rule 1 broad)
+            // document.getElementById('case-increase').addEventListener('click', function(){
+            //    const caseInput = document.getElementById('case-count');
+            //    const caseCount = parseInt(caseInput.value);
+            //    const caseNewCount = caseCount + 1;
+            //    caseInput.value = caseNewCount;
+            //    const caseTotal = caseNewCount * 59;
+            //    document.getElementById('case-total').innerText = caseTotal;
+            // })
+            // minus button (case) (rule 1 broad)
+            // document.getElementById('case-decrease').addEventListener('click', function(){
+            //   const caseInput = document.getElementById('case-count');
+            //   const caseCount = parseInt(caseInput.value);
+            //   const caseNewCount = caseCount - 1;
+            //   caseInput.value = caseNewCount;
+            //   const caseTotal = caseNewCount * 59;
+            //   document.getElementById('case-total').innerText = caseTotal;
+            // })
+         </script>
       </div>
    </section>
+  
 </body>
-   <script>
-      // unit plus 
-const plusBtn = document.getElementById('plus');
-plusBtn.addEventListener('click', function(){
-    var totalUnit = addUnit('unit');
-    updatePrice('price',1219, totalUnit);
-    updateTotalPrice('subTotal',1219);
-})
 
-const plusBtn2 = document.getElementById('plus2');
-plusBtn2.addEventListener('click', function(){
-    var totalUnit = addUnit('unit2');
-    updatePrice('price2',59, totalUnit);
-    updateTotalPrice('subTotal',59);
-})
-
-//unit minus
-const minusBtn = document.getElementById('minus');
-minusBtn.addEventListener('click', function(){
-    var totalUnit = removeUnit('unit');
-    if(totalUnit >= 0){
-    updatePrice('price',1219, totalUnit);
-    updateTotalPrice('subTotal',-1219);
-    }else{
-        alert("You can't add negetive number Product");
-    }
-})
-
-const minusBtn2 = document.getElementById('minus2');
-minusBtn2.addEventListener('click', function(){
-    var totalUnit = removeUnit('unit2');
-    if(totalUnit >= 0){
-    updatePrice('price2',59, totalUnit);
-    updateTotalPrice('subTotal',-59);
-    }else{
-        alert("You can't add negetive number Product");
-    }
-})
-//remove items from cart 
-removeItem('cross1','cartItem1');
-removeItem('cross2','cartItem2');
-
-// functions
-function addUnit(id) {
-    const unit = document.getElementById(id).value;
-    const getUnit= parseFloat(unit);
-    const updateUnit = getUnit + 1;
-    document.getElementById(id).value = updateUnit;
-    return updateUnit;
-}
-
-function removeUnit(id) {
-    const unit = document.getElementById(id).value;
-    const getUnit= parseFloat(unit);
-    if(getUnit > 0){
-        const updateUnit = getUnit - 1;
-        document.getElementById(id).value = updateUnit;
-        return updateUnit;
-    }
-}
-
-function updatePrice(id, single, totalUnit) {
-    const price = document.getElementById(id).innerText;
-    const getPrice = parseFloat(price);
-    const updatePrice  = single * totalUnit;
-    document.getElementById(id).innerText = updatePrice;
-    return updatePrice;
-}
-
-function updateTotalPrice(id,single) {
-    const total = document.getElementById(id).innerText;
-    const totalPrice = parseFloat(total);
-    const updateTotalPrice = totalPrice + single ;
-    document.getElementById(id).innerText = updateTotalPrice;
-    document.getElementById('total').innerText = updateTotalPrice;
-}
-// remove item function
-function removeItem(crossID,itemID) {
-    const removeItem = document.getElementById(crossID);
-    removeItem.addEventListener('click',function () {
-        document.getElementById(itemID).style.display = 'none' ;
-    })
-}
-   </script>
 </html>
