@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="phone-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="phone-count" type="text" class="form-control text-center" value="1">
-                           <button id="phone-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$<span id="phone-total">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleCaseChange(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleCaseChange(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$<span id="case-total">59</span></h5>
@@ -78,15 +78,15 @@
          <script>
             
             
-            // plus button(phone) (rule 2 short way)
-            document.getElementById('phone-increase').addEventListener("click", function(){
-               handleProductChange(true);
+            // // plus button(phone) (rule 2 short way)
+            // document.getElementById('phone-increase').addEventListener("click", function(){
+            //    handleProductChange(true);
 
-            })
-            // minus button (phone) (rule 2 short way)
-            document.getElementById('phone-decrease').addEventListener('click', function(){
-               handleProductChange(false);
-            })
+            // })
+            // // minus button (phone) (rule 2 short way)
+            // document.getElementById('phone-decrease').addEventListener('click', function(){
+            //    handleProductChange(false);
+            // })
             // (work in minus button for different +1 to -1)
             function handleProductChange(isIncrease){
                const phoneInput = document.getElementById('phone-count');
@@ -104,15 +104,16 @@
                document.getElementById('phone-total').innerText = phoneTotal;
             }
 
-             // case plus button(rule 2)
-             document.getElementById('case-increase').addEventListener('click', function(){
-               handleCaseChange(true);
-            })
-            // case minus button (rule 2)
-            document.getElementById('case-decrease').addEventListener('click', function(){
-              handleCaseChange(false);
-            })
+            //  // case plus button(rule 2)
+            //  document.getElementById('case-increase').addEventListener('click', function(){
+            //    handleCaseChange(true);
+            // })
+            // // case minus button (rule 2)
+            // document.getElementById('case-decrease').addEventListener('click', function(){
+            //   handleCaseChange(false);
+            // })
             // (work in minus button for different +1 to -1)
+            
             function handleCaseChange(isCaseIncrease){
                const caseInput = document.getElementById('case-count');
               const caseCount = parseInt(caseInput.value);
